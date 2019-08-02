@@ -15,12 +15,10 @@ class Caldex:
 
     async def export(self, request):
         await self.auth_svc.check_permissions(request)
-        result = dict(abilities=await self.data_svc.explode_operation())
+        raw_operations = await self.data_svc.explode_operation()
         operations = []
-        if "abilities" in result:
-            raw_operations = result["abilities"]
-            for raw_operation in raw_operations:
-                operations.append(Operation(raw_operation))
+        for raw_operation in raw_operations:
+            operations.append(Operation(raw_operation))
         layer = Caldex.convert(operations)
         return web.json_response(layer.export())
 
