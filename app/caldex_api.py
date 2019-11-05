@@ -1,7 +1,7 @@
 from aiohttp import web
 import time
 import json
-
+import math
 class CaldexApi:
 
     def __init__(self, services):
@@ -40,10 +40,8 @@ class CaldexApi:
                         if successful:
                             technique["score"][1] += 1
             # Compute results
-            runs = 1
             for technique in techniques.values():
-                runs = max(runs, technique["score"][0])
-                technique["score"] = technique["score"][1]
+                technique["score"] = math.ceil(technique["score"][1] / max(technique["score"][0], 1) * 100)
             return web.json_response({
                     "version": "2.2",
                     "name": "Caldera Export",
@@ -54,7 +52,7 @@ class CaldexApi:
                     "gradient": {
                             "colors": ["#00ff00", "#ff0000"],
                             "minValue": 0,
-                            "maxValue": runs,
+                            "maxValue": 100,
                         },
                     "legendItems": [
                             {
