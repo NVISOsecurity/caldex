@@ -62,8 +62,16 @@ class CaldexApi:
                                 "color": "#00ff00",
                             },
                             {
+                                "label": "Partially Vulnerable Techniques",
+                                "color": "#ffff00"
+                            },
+                            {
                                 "label": "Vulnerable Techniques",
                                 "color": "#ff0000",
+                            },
+                            {
+                                "label": "Unknown Techniques",
+                                "color": "#ffffff",
                             },
                         ],
                     "selectTechniquesAcrossTactics": False,
