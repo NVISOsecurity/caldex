@@ -9,7 +9,7 @@ class CaldexApi:
         self.auth_svc = services.get('auth_svc')
 
     async def export(self, request):
-        # await self.auth_svc.check_permissions(request)
+        await self.auth_svc.check_permissions(request)
         try:
             operation_filter = request.match_info.get('operation', '')
             criteria = None
