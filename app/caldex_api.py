@@ -42,6 +42,8 @@ class CaldexApi:
             # Compute results
             for technique in techniques.values():
                 technique["score"] = math.ceil(technique["score"][1] / max(technique["score"][0], 1) * 100)
+                if technique["score"] is 0:
+                    technique["color"] = "#00ff00"
             return web.json_response({
                     "version": "2.2",
                     "name": "Caldera Export",
@@ -50,7 +52,7 @@ class CaldexApi:
                     "sorting": 3,
                     "techniques": list(techniques.values()),
                     "gradient": {
-                            "colors": ["#00ff00", "#ff0000"],
+                            "colors": ["#bbff00", "#ffff00", "#ff0000"],
                             "minValue": 0,
                             "maxValue": 100,
                         },
