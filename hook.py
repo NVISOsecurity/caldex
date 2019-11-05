@@ -2,7 +2,7 @@ from plugins.caldex.app.caldex_api import CaldexApi
 
 name = 'Caldex'
 description = 'Export the Caldera reports to a MITRE ATT&CK Navigator Layer.'
-address = 'caldex'
+address = '/caldex'
 
 
 async def initialize(app, services):
