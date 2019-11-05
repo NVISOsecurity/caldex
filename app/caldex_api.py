@@ -36,14 +36,16 @@ class CaldexApi:
                         tKey = abilities[aKey]
                         technique = techniques[tKey]
                         technique["score"][0] += 1
-                        technique["enabled"] = True
+                        if "enabled" in technique:
+                            del technique["enabled"]
+                            technique["color"] = "#00ff00"
                         if successful:
+                            if "color" in technique:
+                                del technique["color"]
                             technique["score"][1] += 1
             # Compute results
             for technique in techniques.values():
                 technique["score"] = math.ceil(technique["score"][1] / max(technique["score"][0], 1) * 100)
-                if technique["score"] is 0:
-                    technique["color"] = "#00ff00"
             return web.json_response({
                     "version": "2.2",
                     "name": "Caldera Export",
