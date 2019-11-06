@@ -12,7 +12,7 @@ As one would do for any Caldera plugin, installing Caldex can be achieved using 
    ```bash
    # This command assumes "~/caldera" to be Caldera's root.
    # You might need to change this accordingly (i.e. "/home/user/Downloads/caldera").
-   git clone -C ~/caldera/plugins -b "2.3.2" https://github.com/NVISO-BE/caldex.git
+   git -C ~/caldera/plugins clone -b "2.3.2" https://github.com/NVISO-BE/caldex.git
    ```
 
 2. Add Caldex to the enabled plugins in the used Caldera configuration file (i.e. `~/caldera/conf/local.yml`). The following snippet is an example using the default configuration.
